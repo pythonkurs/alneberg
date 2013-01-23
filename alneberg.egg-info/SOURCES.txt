@@ -1,0 +1,9 @@
+setup.cfg
+setup.py
+alneberg/__init__.py
+alneberg.egg-info/PKG-INFO
+alneberg.egg-info/SOURCES.txt
+alneberg.egg-info/dependency_links.txt
+alneberg.egg-info/entry_points.txt
+alneberg.egg-info/not-zip-safe
+alneberg.egg-info/top_level.txt
