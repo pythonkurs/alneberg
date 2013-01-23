@@ -5,6 +5,9 @@ def fetch_xml(url):
     r = requests.get(url)
     return r.text
 
+def fetch_NYC_escalator_info():
+    xml_url = "http://www.grandcentral.org/developers/data/nyct/nyct_ene.xml"
+    return fetch_xml(xml_url)
 
 def fraction_escalator_with_repair_status(xml_raw):
     doc = untangle.parse(xml_raw)
