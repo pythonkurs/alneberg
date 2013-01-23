@@ -1,6 +1,6 @@
 #!/home/johannes/.virtualenvs/py2.7/bin/python
-import alneberg
+from alneberg import fetch_NYC_escalator_info, fraction_escalator_with_repair_status
 
-xml = alneberg.fetch_NYC_escalator_info()
-fraction_escalators = alneberg.fraction_escalator_with_repair_status(xml)
+xml = fetch_NYC_escalator_info()
+fraction_escalators = fraction_escalator_with_repair_status(xml)
 print fraction_escalators
