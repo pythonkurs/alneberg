@@ -5,3 +5,6 @@
 *.swp
 # Emacs generated files #
 *~
+build/*
+dist/*
+*.egg*
