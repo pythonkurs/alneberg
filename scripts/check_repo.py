@@ -4,8 +4,17 @@ from argparse import ArgumentParser
 import os
 
 def main(path):
-    with repo_dir(path):
+    if path[-1] == "/":
+        path = path[0:-1]
+    (base_path,repo) = os.path.split(path)
 
+    with repo_dir(path):
+        cr = CourseRepo(repo)
+        if cr.check():
+            print "PASS!"
+        else:
+            print "FAIL!"
+        
 
 if __name__=="__main__":
     parser = ArgumentParser()
