@@ -1,4 +1,17 @@
 import os
+
+class repo_dir:
+    "A context manager that changes directory"
+    def __init__(self, path):
+        self.origin = os.getcwd()
+        self.target = path
+
+    def __enter__(self):
+        os.chdir(self.target)
+
+    def __exit__(self, type, value, tb):
+        os.chdir(self.origin)
+
 class CourseRepo(object):
     
     def __init__(self, surname):
