@@ -8,7 +8,7 @@ import sys
 def fetch_commits(secret_file_path):
     with open(secret_file_path) as secret:
         password = secret.read().strip()
-        
+
     repos = requests.get("https://api.github.com/orgs/pythonkurs/repos", auth=("alneberg", password))
     repos_data = repos.json()
     data_dict = {}
@@ -28,7 +28,7 @@ def fetch_commits(secret_file_path):
                 sys.stderr.write('Something wrong here:\n')
                 sys.stderr.write('commit: ' + str(commit) + '\n')
                 sys.stderr.write('Commits_data: '+ str(commits_data) + '\n')
-                sys.stderr.write('author: ' + str(author_name)'\n\n')
+                sys.stderr.write('author: ' + str(author_name) + '\n\n')
     df = DataFrame(data_dict)
     return df
 #    df.to_csv('mydf.tsv', sep='\t')
