@@ -3,9 +3,10 @@ from pandas import DataFrame, Series
 from dateutil import parser
 import datetime
 from collections import Counter
+import sys
 
-def fetch_commits():
-    with open("/home/johannes/secret") as secret:
+def fetch_commits(secret_file_path):
+    with open(secret_file_path) as secret:
         password = secret.read().strip()
         
     repos = requests.get("https://api.github.com/orgs/pythonkurs/repos", auth=("alneberg", password))
@@ -19,9 +20,15 @@ def fetch_commits():
         time_list = []
         author_name = repo['html_url'].split('/')[-1]
         for commit in commits_data:
-            commit_list.append(commit['commit']['message'])
-            time_list.append(commit['commit']['author']['date'])
-        data_dict[author_name] = Series(commit_list, index=time_list)
+            try:
+                commit_list.append(commit['commit']['message'])
+                time_list.append(commit['commit']['author']['date'])
+                data_dict[author_name] = Series(commit_list, index=time_list)
+            except:
+                sys.stderr.write('Something wrong here:\n')
+                sys.stderr.write('commit: ' + str(commit) + '\n')
+                sys.stderr.write('Commits_data: '+ str(commits_data) + '\n')
+                sys.stderr.write('author: ' + str(author_name)'\n\n')
     df = DataFrame(data_dict)
     return df
 #    df.to_csv('mydf.tsv', sep='\t')
