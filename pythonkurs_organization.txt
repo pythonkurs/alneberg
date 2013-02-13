@@ -1,0 +1,7 @@
+I found that one repository "lotstedt" caused an error in my script (now fixed with "try"), 
+I could use the api to further investigate this repos. Turned out it was just empty.
+It would sometimes be useful to check all repositories in an organization for open issues,
+this was really easy in the api. No repo had any issue when I checked. However, all
+repositories had the issue feature activated. This might be useful when administrating
+all repos in an organization.
+
